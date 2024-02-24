@@ -1,5 +1,5 @@
 import { configDotenv } from "dotenv";
-import { drizzle } from "drizzle-orm/node-postgres";
+import { NodePgDatabase, drizzle } from "drizzle-orm/node-postgres";
 import pg from "pg";
 
 configDotenv();
@@ -13,11 +13,18 @@ const client = new pg.Client({
   database: process.env.PG_DATABASE,
 });
 
+
+let _db: NodePgDatabase<Record<string, never>> | null = null
+
 export const getDb = async () => {
+  if (_db) return _db;
   await client.connect();
 
-  return drizzle(client);
+  _db = drizzle(client);
+
+  return _db;
+
 }
 
 
-export const db = await getDb()
+// export const db = await getDb()

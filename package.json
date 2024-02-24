@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.tsx"
   },
@@ -12,6 +11,8 @@
     "hono": "^4.0.5",
     "pg": "^8.11.3",
     "strava-v3": "^2.2.0",
+    "ts-results": "^3.3.0",
+    "tslib": "^2.6.2",
     "typescript": "^5.3.3"
   },
   "devDependencies": {

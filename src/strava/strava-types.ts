@@ -1,4 +1,4 @@
-export type Activity = {
+export type StravaActivity = {
   resource_state: number;
   athlete: Athlete;
   name: string;
@@ -52,6 +52,10 @@ export type Activity = {
   average_watts?: number;
   kilojoules?: number;
   device_watts?: boolean;
+}
+
+export type Activity = Omit<StravaActivity, 'id'> & {
+  strava_id: number
 }
 
 export type Athlete = {
